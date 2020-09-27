@@ -7,6 +7,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
@@ -15,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.social.ui.main.SectionsPagerAdapter;
 
@@ -48,6 +50,7 @@ public class MainActivity2 extends AppCompatActivity {
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
         }
+
 
         //ui flags
         decorvew = getWindow().getDecorView();
@@ -84,6 +87,25 @@ public class MainActivity2 extends AppCompatActivity {
             decorvew.setSystemUiVisibility(uioptions);
         }
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int id=item.getItemId();
+        switch (id){
+            case R.id.search_menu:
+                Toast.makeText(this, "search", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.settings_menu:
+                Toast.makeText(this, "settings", Toast.LENGTH_SHORT).show();
+        }return true;
+    }
+
 
     public int hideSystemBars() {
         return View.SYSTEM_UI_FLAG_LAYOUT_STABLE
